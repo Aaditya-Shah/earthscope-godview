@@ -1,0 +1,42 @@
+<?php
+declare(strict_types=1);
+// Copy this file to config.local.php. Never upload your real keys to a public repository.
+return [
+    // MySQL/MariaDB database for saved places. Create the DB/user in cPanel and import sql/schema.sql.
+    'db_host' => 'localhost',
+    'db_name' => 'YOUR_CPANEL_DATABASE_NAME',
+    'db_user' => 'YOUR_CPANEL_DATABASE_USER',
+    'db_pass' => 'YOUR_DATABASE_PASSWORD',
+    'db_charset' => 'utf8mb4',
+
+    // Optional: OpenRouter key for the Earth Q&A assistant. Never put this in JavaScript.
+    'openrouter_api_key' => 'ADD_A_NEW_OPENROUTER_KEY_HERE',
+    'openrouter_model' => 'openrouter/free',
+    // If a pinned model is rate-limited or returns an empty answer, retry using this alternate route.
+    'openrouter_fallback_model' => 'openrouter/free',
+    // Optional image-based plant/crop candidate analysis; set this to a vision-capable model ID available to your OpenRouter account.
+    'openrouter_vision_model' => 'ADD_A_VISION_CAPABLE_MODEL_ID_HERE',
+    'openrouter_tts_model' => 'fish-audio/s2.1-pro-free:free',
+    'openrouter_site_url' => 'https://your-domain.example',
+    'openrouter_app_name' => 'EARTHSCOPE Earth Intelligence',
+
+    // Optional: free NASA FIRMS MAP_KEY from https://firms.modaps.eosdis.nasa.gov/api/area/
+    'firms_map_key' => 'ADD_FIRMS_MAP_KEY_HERE',
+
+    // Optional: data.gov.in API key for official Indian mandi min/max/modal prices.
+    'data_gov_in_api_key' => 'ADD_DATA_GOV_IN_API_KEY_HERE',
+
+    // Optional: TheMealDB key for live recipe search. Key '1' is for development/educational testing; use a supporter key for public production.
+    'themealdb_api_key' => 'ADD_A_THEMALDB_SUPPORTER_KEY_HERE',
+
+    // Optional: API Ninjas REST API key for weather, air quality, nutrition, recipes, vehicles and country data.
+    // Keep this secret on the server. Rotate any key pasted into chats or screenshots.
+    'api_ninjas_api_key' => 'ADD_A_NEW_API_NINJAS_KEY_HERE',
+    'api_ninjas_mcp_endpoint' => 'https://mcp.api-ninjas.com/mcp',
+
+    // Optional Aviationstack API key for flight metadata fallback. Free plans are quota-limited.
+    'aviationstack_api_key' => 'ADD_NEW_AVIATIONSTACK_KEY_HERE',
+
+    // Put a real contact email into the Nominatim user-agent if using search.
+    'nominatim_user_agent' => 'EARTHSCOPE/1.0 (contact: your-email@example.com)',
+];

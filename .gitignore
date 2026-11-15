@@ -1,0 +1,12 @@
+# Runtime files. config.local.php ships blank and IS tracked so a clone runs;
+# never commit real keys to it — set them on the server instead.
+storage/cache/*
+!storage/cache/.htaccess
+!storage/cache/index.html
+storage/ratelimit/*
+!storage/ratelimit/.htaccess
+!storage/ratelimit/index.html
+storage/db/*.sqlite
+storage/geocode-last-request.txt
+.DS_Store
+Thumbs.db
