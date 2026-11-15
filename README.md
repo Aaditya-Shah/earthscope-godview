@@ -24,6 +24,18 @@ and a tactical "God's Eye" recon HUD. No build step, no framework, no database s
 > **Try it live:** [earthscope.yantraiot.com](https://earthscope.yantraiot.com) — source code for
 > that deployment is in [Releases](../../releases).
 
+<div align="center">
+
+### Watch the 45-second product tour
+
+<a href="docs/video/earthscope-demo.mp4">
+  <img src="docs/screenshots/gods-eye-command-center.png" alt="EARTHSCOPE GodView product tour — click to play" width="100%">
+</a>
+
+**[▶ Play the demo video](docs/video/earthscope-demo.mp4)** (45 s, 1080p, 21 MB)
+
+</div>
+
 ---
 
 ## What this is
@@ -60,6 +72,70 @@ front end is plain ES modules and CSS — there is nothing to compile.
 <td width="50%"><img src="docs/screenshots/gods-eye-full-platform.png" alt="God's Eye View Cesium platform"><br><sub><b>Full God's Eye platform</b> — optional Cesium viewer embedded via <code>godseyePlatformUrl</code>.</sub></td>
 </tr>
 </table>
+
+---
+
+## NASA Space Apps Challenge 2026
+
+Built for **Challenge 7 / Field Shift — Adapting Farms with NASA Data**, as **Team NExHunter**.
+
+**One planet. Multiple evidence sources. Clearer decisions.** A farm decision needs more than a
+weather snapshot: climate history, soil properties, crop envelopes, water context and market signals
+each answer different questions — and usually live in different places. EARTHSCOPE joins them into
+one pin-first evidence board where every signal keeps its own source and evidence type.
+
+The submission deck (7 pages, product framing, screenshots, architecture, and the full team) is here:
+
+**[📄 EARTHSCOPE — NASA Space Apps Challenge 2026 deck (PDF)](docs/deck/EARTHSCOPE-NASA-Space-Apps-2026.pdf)**
+
+<div align="center">
+  <a href="docs/deck/EARTHSCOPE-NASA-Space-Apps-2026.pdf">
+    <img src="docs/screenshots/globe-explorer.png" alt="EARTHSCOPE NASA Space Apps deck" width="88%">
+  </a>
+</div>
+
+### How it was built
+
+```
+01  Open sources        NASA + partner feeds (GIBS, POWER, EONET, FIRMS, CMR/NISAR)
+02  PHP API layer       fetch · normalise · cache · rate-limit
+03  Geo visualisation   MapLibre · Cesium · Three.js
+04  Evidence + tools    source tags · crop screening · optional AI
+```
+
+PHP 8.x · JavaScript ES6 · MapLibre GL JS · Three.js · Cesium · SQLite / MySQL · PWA.
+Open-Meteo is primary for climate history; NASA POWER is the fallback.
+
+### What the Crop Atlas actually does
+
+617 crop and plant records, screened on a transparent 0–100 index:
+
+| Input | Weight |
+|---|---|
+| Temperature | 45% |
+| Precipitation | 30% |
+| Soil context | 15% |
+| Water context | 10% |
+
+Climate history + FAO EcoCrop envelopes + SoilGrids estimates + water inputs → screening index.
+
+> **Honest limits, by design.** This is not a yield forecast or a harvest guarantee. SoilGrids is
+> gridded model output, not field measurement. Mandi prices are wholesale observations, not
+> farm-gate offers. Reported records and provider coverage are not a certified emergency-warning
+> system, and NISAR access is catalogue metadata discovery only.
+
+### Team NExHunter — six contributors
+
+| | Role |
+|---|---|
+| **Aadiya Shah** | Team lead · full-stack developer |
+| Ankit Shah | Head researcher · idea & presentation |
+| Raghavendra Kumar Mahato | Researcher · data analyst |
+| Anik Mandal | Developer · system integration |
+| Piyush Jha | Testing · bug resolution |
+| Agshish Kumar Sah | QA · testing & deployment |
+
+**Measured ≠ Modelled ≠ AI-interpreted.** Explore the Earth. Understand the evidence. Empower decisions.
 
 ---
 
@@ -223,6 +299,8 @@ assets/                CSS + ES modules, no bundler
 sql/schema.sql         MySQL schema (SQLite is auto-provisioned)
 storage/               cache, rate limit, sqlite — blocked from the web
 docs/screenshots/      images used in this README
+docs/video/            45-second product tour (Git LFS)
+docs/deck/             NASA Space Apps Challenge 2026 submission deck
 ```
 
 ---
